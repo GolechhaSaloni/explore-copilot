@@ -1,0 +1,2 @@
+// create a component called ItemTable that uses itemService.js to fetch data and parses and validates it using parseItem.js and validateItem.js.
+// use the created json to render a DataTable component

@@ -1,3 +1,5 @@
+// create a component to stitch together all the components from "/src/components"
+
 import './App.css';
 
 function App() {

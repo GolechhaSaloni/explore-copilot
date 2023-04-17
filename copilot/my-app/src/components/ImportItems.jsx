@@ -1,0 +1,2 @@
+// create a component that imports an excel file using fileExplorer or Drag and Drop and parses it using parseItem.js and validates it using validateItem.js.
+// this should use itemService.js to create the items and push them to the server
