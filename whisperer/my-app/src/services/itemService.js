@@ -1,4 +1,14 @@
-// create a client that can be used to make requests to the API "http://localhost:5000/"
+// create a client that can be used to make requests to the rest API "http://localhost:5000/"
+function  createClient() {
+    return new ApolloClient({
+    uri: "http://localhost:5000/",
+    cache: new InMemoryCache(),
+  });
+}
+
+
+
+
 function  createClient() {
   return new ApolloClient({
     uri: "http://localhost:5000/",
@@ -6,7 +16,7 @@ function  createClient() {
   });
 }
 
-// a method to get all items
+// a method to call rest api to get all items
 function  getAll() {
     const client = createClient();
   return client.query({
@@ -21,6 +31,7 @@ function  getAll() {
     `,
   });
 }
+
 
 // a method to get a single item
 function  get(id) {
