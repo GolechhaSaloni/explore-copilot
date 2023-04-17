@@ -11,6 +11,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Item from './Item';
 
 // columns should map from the attributesName prop
 // data should map from the data prop
@@ -29,6 +30,7 @@ export default function DataTable({ data, attributesName }) {
     const classes = useStyles();
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    const [showItem, setShowItem] = React.useState(false);
 
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
@@ -38,6 +40,10 @@ export default function DataTable({ data, attributesName }) {
         setRowsPerPage(+event.target.value);
         setPage(0);
     };
+
+    const handleClick = () => {
+        setShowItem(true);
+    }
 
     return (
         <Paper className={classes.root}>
@@ -56,10 +62,17 @@ export default function DataTable({ data, attributesName }) {
                                 <TableRow hover role="checkbox" tabIndex={-1} key={row.code}>
                                     {attributesName.map((attribute) => {
                                         const value = row[attribute];
+                                        const handleClick = () => {
+                                            if (attribute === 'name') {
+                                                setShowItem(true);
+                                            }
+                                            console.log('clicked', attribute, value);
+                                        }
                                         return (
-                                            <TableCell key={attribute}>{value}</TableCell>
+                                            <TableCell key={attribute} onClick={handleClick}>{value}</TableCell>
                                         );
                                     })}
+                                    {showItem && <Item item={row} isVisible={showItem} setIsVisible={setShowItem}/>}
                                 </TableRow>
                             );
                         })}
